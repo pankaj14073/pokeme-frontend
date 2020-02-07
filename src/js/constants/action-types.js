@@ -1,0 +1,6 @@
+export const ASK_QUESTION = "ASK_QUESTION";
+export const FILTER_QUESTIONS = "FILTER_QUESTIONS";
+export const AUTHENTICATE = "AUTHENTICATE";
+export const LOGOUT = "LOGOUT";
+
+
