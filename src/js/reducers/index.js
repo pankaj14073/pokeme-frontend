@@ -106,7 +106,7 @@ function rootReducer(state = initialState, action) {
     else if (action.type == AUTHENTICATE) {
         console.log('authenticating :', action.payload.email);
         return Object.assign({}, state, {
-            auth: true,
+            auth: false,
             user: { name: 'Pankaj Anuragi', location: 'Delhi' }
         });
     }

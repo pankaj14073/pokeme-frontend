@@ -1,7 +1,5 @@
 import React from "react";
-import './LoginPage.css';
-import Post from "../../Components/Post/Post";
-import Header from "../../Components/Header/Header";
+import './RegisterPage.css';
 import { connect } from "react-redux";
 import { authenticate } from "../../js/actions/index"
 import { Redirect } from "react-router-dom";
@@ -15,7 +13,7 @@ const mapDispatchToProps = dispatch => {
         authenticate: val => dispatch(authenticate(val))
     };
 }
-class LoginPage extends React.Component {
+class RegisterPage extends React.Component {
 
     constructor(props) {
         super(props);
@@ -69,24 +67,24 @@ class LoginPage extends React.Component {
         console.log('clicked submit')
         //this.props.history.push('/home')
     }
-    registerUser(e) {
-        return <Redirect to="/register" />
-    }
+
     render() {
         if (this.props.auth)
             return <Redirect to="/home" />
 
         return (
-            <div className="Login" className="text-center">
-                <form className="form-signin" onSubmit={e => this.handleSubmit(e)}>
+            <div className="Register" className="text-center">
+                <form className="form-register" onSubmit={e => this.handleSubmit(e)}>
                     <img className="mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72" />
                     <h1 className="h3 mb-3 font-weight-normal">Login</h1>
                     <label className="sr-only">Email address</label>
                     <input type="email" className="form-control" name="email" placeholder="Email"
+                        required
                         onChange={(event) => this.handleUserInput(event)}
                     />
                     <label className="sr-only">Password</label>
                     <input type="password" className="form-control" name="password" placeholder="Password"
+                        required
                         onChange={(event) => this.handleUserInput(event)}
                     />
                     <div className="checkbox mb-3">
@@ -95,12 +93,10 @@ class LoginPage extends React.Component {
                         </label>
                     </div>
                     <button className="btn btn-lg btn-primary btn-block" type="submit" disabled={!this.state.isValidForm}>Sign in</button>
-                    <button className="btn btn-lg btn-primary btn-block" onClick={(event) => this.registerUser(event)} >Register</button>
-
                     <p className="mt-5 mb-3">&copy; pxnkaj</p>
                 </form>
             </div>
         );
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage)
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterPage)
